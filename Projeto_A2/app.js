@@ -130,20 +130,30 @@ else if (path === "/imc"){
 }
     else if (path ==="/dolar"){
     
-        const dolar = parseFloat(query.d);
-        const real = parseFloat(query.r);
-         if(isNaN(dolar) || isNaN(real)){
+        var dolar = parseFloat(query.d);
+        var real 
+        var conv
+        if(isNaN(dolar)){
             res.writeHead(400, {'Content-Type': "text/plain; charset=utf-8"});
             res.end(`ERRO 400 - Valor de IMC invalido.`);
-         }else{
-            const conv = dolar*real;
+         }else
+            real = 5.01
+            conv = dolar*real;
+            {
+                fs.readFile('conv.html', 'utf-8', (err, data) => {
+                    if(err){
+                        res.writeHead(500,{'Content-Type' : "text/plain; charset=utf-8"} )
+                        res.end('500 - Erro interno do servidor...');
+                    }else{
+                        data = data.replace(`{dolar}`, dolar.toFixed(2));
+                        data = data.replace(`{real}`, real.toFixed(2));
+                        data = data.replace(`{conv}`, conv.toFixed(2));
+                        res.writeHead(400, {'Content-Type' : "text/html; charset=utf-8"});
+                        res.end(data);        
 
+                    }})}
             
-        res.writeHead(200, {'Content-type': "text/plain; charset=utf-8"}); 
-        res.end(`Valor Dolar: ${dolar.toFixed(2)}
-         \nValor em Reais:${real.toFixed(2)} 
-         \nValor Convertido:${conv.toFixed(2)}`);
-         }
+    
     }
     else if (path === "/notas"){
         const nota1 = parseFloat(query.n1);
