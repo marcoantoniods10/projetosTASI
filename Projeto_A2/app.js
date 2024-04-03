@@ -187,6 +187,6 @@ server.listen(PORT, () => {
     console.log (`[OK - Servidor iniciado em http://localhost:${PORT}]`);
 })
 
-//http://localhost:4800/dolar?d=1&r=5.01
+//http://localhost:4800/dolar?d=1
 //http://localhost:4800/notas?n1=6.0&med=6.0&n2=5.0
 //http://localhost:4800/imc?pes=80&alt=1.80
