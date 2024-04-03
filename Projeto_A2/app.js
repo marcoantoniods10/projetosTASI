@@ -2,11 +2,12 @@
 // UNICSUL - Universidade Cruzeiro do Sul - Santo Amaro
 // Curso: CTS Analise e Desenvolvimento de Sistemas
 // Disciplina: Topicos Avançados de SI - I
-// Autor: Marco Antonio dos Santos - Data: 25/03/2024
-// Descrição: 
+// Autor: Marco Antonio dos Santos
+// RGM: 35300876
+// Descrição: Projeto A2 - Desenvolver sitema com node.JS com 3 caminhos que são IMC, NOTAS e DOLAR. Todos feitos com um retorno de HTML.
 //*******************************************************
 
-const PORT = 4800;
+const PORT = 5678;
 
 const http = require ('http');
 const url = require ('url');
@@ -129,7 +130,7 @@ else if (path === "/imc"){
     }
 }
     else if (path ==="/dolar"){
-    
+    //Formula para digitar apenas o valor do dolar e ter retorno:
         var dolar = parseFloat(query.d);
         var real 
         var conv
@@ -187,6 +188,7 @@ server.listen(PORT, () => {
     console.log (`[OK - Servidor iniciado em http://localhost:${PORT}]`);
 })
 
-//http://localhost:4800/dolar?d=1
-//http://localhost:4800/notas?n1=6.0&med=6.0&n2=5.0
-//http://localhost:4800/imc?pes=80&alt=1.80
+//Indice Para facil acesso:
+//http://localhost:5978/dolar?d=1
+//http://localhost:5978/notas?n1=6.0&med=6.0&n2=5.0
+//http://localhost:5978/imc?pes=80&alt=1.80
