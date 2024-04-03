@@ -19,9 +19,16 @@ const server = http.createServer((req, res) =>{
     const path = reqUrl.pathname;
     const query = reqUrl.query;
 if (path === "/"){
-    res.writeHead(200, {'Content-type': "text/plain; charset=utf-8"}); 
-    res.end(`Pagina Inicial`);
-}
+    fs.readFile('inicio.html', 'utf-8', (err, data) => {
+        if(err){
+            res.writeHead(500,{'Content-Type' : "text/plain; charset=utf-8"} )
+            res.end('500 - Erro interno do servidor...');
+        }else{
+            res.writeHead(400, {'Content-Type' : "text/html; charset=utf-8"});
+            res.end(data);
+       }})
+       
+        }
 else if (path === "/imc"){
     const peso = parseFloat(query.pes)
     const altura = parseFloat(query.alt)
